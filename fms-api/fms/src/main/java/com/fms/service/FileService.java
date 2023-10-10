@@ -11,6 +11,7 @@ import java.util.List;
 @Service
 public class FileService {
     private final FileRepository fileRepository;
+    private final UserService userService;
 
     public List<File> getAllFiles(){
         return fileRepository.findAll();

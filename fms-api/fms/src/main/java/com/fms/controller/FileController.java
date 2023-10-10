@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@RestController("/files")
 @RequiredArgsConstructor
 public class FileController {
     private final FileService fileService;
 
-    @GetMapping("api/files")
+    @GetMapping()
     public ResponseEntity<List<File>> getAllFiles(){
         return new ResponseEntity<>(fileService.getAllFiles(), HttpStatus.OK);
     }

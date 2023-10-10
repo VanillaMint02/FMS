@@ -2,6 +2,7 @@ package com.fms.mapper;
 
 import com.fms.domain.File;
 import com.fms.dto.FileDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.UUID;
