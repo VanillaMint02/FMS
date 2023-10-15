@@ -1,9 +1,7 @@
 package com.fms.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +20,8 @@ public class File extends BaseEntity{
     private String name;
     private String path;
     private String type;
-    @ManyToOne
+    @ManyToOne()
+    @JsonIgnore
     User user;
 }
 

@@ -2,7 +2,9 @@ package com.fms.dto;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -10,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 public class UserDto {
-    private String id;
+    private UUID id;
     private String username;
     private String password;
     private String email;

@@ -2,6 +2,8 @@ package com.fms.dto;
 
 import lombok.*;
 
+import java.util.UUID;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -9,8 +11,9 @@ import lombok.*;
 @Getter
 @Setter
 public class FileDto {
-    private String id;
+    private UUID id;
     private String name;
     private String path;
     private String type;
+    private UUID userId;
 }

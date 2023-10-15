@@ -1,5 +1,6 @@
 package com.fms.domain;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,6 +22,7 @@ public class User extends BaseEntity{
     private String username;
     private String password;
     private String email;
-    @OneToMany
-    private List<File> files;
+
+    @OneToMany(mappedBy = "user" ,cascade = CascadeType.PERSIST)
+    private List<File> files=new ArrayList<File>();
 }

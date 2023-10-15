@@ -14,7 +14,7 @@ public class UserMapper {
 
     public User toEntity(UserDto userDto) {
         return User.builder()
-                .id(UUID.fromString(userDto.getId()))
+                .id(userDto.getId())
                 .email(userDto.getEmail())
                 .username(userDto.getUsername())
                 .password(userDto.getPassword())
@@ -23,7 +23,7 @@ public class UserMapper {
     }
     public UserDto toDto(User user){
         return UserDto.builder()
-                .id(user.getId().toString())
+                .id(user.getId())
                 .email(user.getEmail())
                 .files(user.getFiles().stream().map(fileMapper::toDto).toList())
                 .password(user.getPassword())
