@@ -1,5 +1,7 @@
 package com.fms.error;
 
+import com.fms.error.custom.errors.DifferentAccountException;
+import com.fms.error.custom.errors.EmptyFileException;
 import com.fms.error.custom.errors.InvalidDataException;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,6 +59,23 @@ public class ControllerErrors extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleInvalidAttributeValue(
             RuntimeException ex, WebRequest request) {
 
+        return handleExceptionInternal(ex,getResponseBody(ex),getHttpHeaders(),HttpStatus.BAD_REQUEST,request);
+    }
+    @ExceptionHandler(value= DifferentAccountException.class)
+    protected ResponseEntity<Object>handleDifferentAccount(
+            RuntimeException ex,WebRequest request
+    ){
+        return handleExceptionInternal(ex,getResponseBody(ex),getHttpHeaders(),HttpStatus.FORBIDDEN,request);
+    }@ExceptionHandler(value= EmptyFileException.class)
+    protected ResponseEntity<Object>handleEmptyFile(
+            RuntimeException ex,WebRequest request
+    ){
+        return handleExceptionInternal(ex,getResponseBody(ex),getHttpHeaders(),HttpStatus.BAD_REQUEST,request);
+    }
+    @ExceptionHandler(value= IOException.class)
+    protected ResponseEntity<Object>handleIoException(
+            RuntimeException ex,WebRequest request
+    ){
         return handleExceptionInternal(ex,getResponseBody(ex),getHttpHeaders(),HttpStatus.BAD_REQUEST,request);
     }
 }
