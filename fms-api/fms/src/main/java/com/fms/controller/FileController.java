@@ -25,15 +25,17 @@ public class FileController {
     private final FileMapper fileMapper;
 
     @GetMapping("{id}")
-    public ResponseEntity<Page<File>>getAllFilesByTypeAndPage(@PathVariable("id") UUID userId,@RequestParam("type") String type,@RequestParam("page") Integer page ,@RequestParam("size") Integer size ){
-        return new ResponseEntity<>(fileService.getAllFilesByPageAndType(userId,type,page,size),HttpStatus.OK);
+    public ResponseEntity<Page<File>> getAllFilesByTypeAndPage(@PathVariable("id") UUID userId, @RequestParam("type") String type, @RequestParam("page") Integer page, @RequestParam("size") Integer size) {
+        return new ResponseEntity<>(fileService.getAllFilesByPageAndType(userId, type, page, size), HttpStatus.OK);
     }
-    @PostMapping(value ="/{id}",consumes = MediaType.MULTIPART_FORM_DATA_VALUE,produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<File>postFile(@PathVariable("id") UUID userId ,@RequestParam("file") MultipartFile multiPartFile) throws IOException {
-        return new ResponseEntity<>(fileService.createNewFile(userId,multiPartFile),HttpStatus.OK);
+
+    @PostMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<File> postFile(@PathVariable("id") UUID userId, @RequestParam("file") MultipartFile multiPartFile) throws IOException {
+        return new ResponseEntity<>(fileService.createNewFile(userId, multiPartFile), HttpStatus.OK);
     }
+
     @GetMapping("/types")
-    public ResponseEntity<List<String>>getAllAcceptedFileTypes(){
-        return new ResponseEntity<>(acceptedFileTypesList,HttpStatus.OK);
+    public ResponseEntity<List<String>> getAllAcceptedFileTypes() {
+        return new ResponseEntity<>(acceptedFileTypesList, HttpStatus.OK);
     }
 }

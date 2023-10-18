@@ -11,58 +11,49 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-public class UserDetail implements UserDetails
-{
+public class UserDetail implements UserDetails {
     private final User user;
 
-    public UserDetail(User user)
-    {
+    public UserDetail(User user) {
         this.user = user;
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities()
-    {
+    public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        GrantedAuthority       authority   = new SimpleGrantedAuthority("USER");
+        GrantedAuthority authority = new SimpleGrantedAuthority("USER");
         authorities.add(authority);
         AbstractAuthenticationToken token = (AbstractAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         return authorities;
     }
 
     @Override
-    public String getPassword()
-    {
+    public String getPassword() {
         return this.user.getPassword();
     }
 
     @Override
-    public String getUsername()
-    {
+    public String getUsername() {
         return this.user.getEmail();
     }
 
     @Override
-    public boolean isAccountNonExpired()
-    {
+    public boolean isAccountNonExpired() {
         return true;
     }
 
     @Override
-    public boolean isAccountNonLocked()
-    {
+    public boolean isAccountNonLocked() {
         return true;
     }
 
     @Override
-    public boolean isCredentialsNonExpired()
-    {
+    public boolean isCredentialsNonExpired() {
         return true;
     }
 
     @Override
-    public boolean isEnabled()
-    {
+    public boolean isEnabled() {
         return true;
     }
 }

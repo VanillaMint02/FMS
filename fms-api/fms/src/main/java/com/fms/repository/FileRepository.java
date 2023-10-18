@@ -11,6 +11,7 @@ import java.util.UUID;
 
 @Repository
 public interface FileRepository extends JpaRepository<File, UUID> {
-   Page<File> findByUserIdAndType(UUID userId,String type,Pageable pageable);
-   List<File> findByUserId(UUID userId);
+    Page<File> findByUserIdAndType(UUID userId, String type, Pageable pageable);
+
+    List<File> findByUserId(UUID userId);
 }

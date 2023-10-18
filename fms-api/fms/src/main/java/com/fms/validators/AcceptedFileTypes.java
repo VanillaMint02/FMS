@@ -9,7 +9,7 @@ public enum AcceptedFileTypes {
     public final String label;
 
     AcceptedFileTypes(String label) {
-        this.label=label;
+        this.label = label;
     }
 
 

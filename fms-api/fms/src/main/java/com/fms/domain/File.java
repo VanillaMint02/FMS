@@ -15,9 +15,13 @@ import javax.validation.constraints.NotEmpty;
 @SuperBuilder
 @Getter
 @Setter
-@Table(name="files")
-public class File extends BaseEntity{
+@Table(name = "files")
+public class File extends BaseEntity {
 
+    @ManyToOne()
+    @JsonIgnore
+    @NotEmpty
+    User user;
     @NonNull
     @NotEmpty
     private String name;
@@ -27,10 +31,6 @@ public class File extends BaseEntity{
     @NonNull
     @NotEmpty
     private String type;
-    @ManyToOne()
-    @JsonIgnore
-    @NotEmpty
-    User user;
 }
 
 

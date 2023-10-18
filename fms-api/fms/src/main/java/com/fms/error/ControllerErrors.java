@@ -59,23 +59,27 @@ public class ControllerErrors extends ResponseEntityExceptionHandler {
     protected ResponseEntity<Object> handleInvalidAttributeValue(
             RuntimeException ex, WebRequest request) {
 
-        return handleExceptionInternal(ex,getResponseBody(ex),getHttpHeaders(),HttpStatus.BAD_REQUEST,request);
+        return handleExceptionInternal(ex, getResponseBody(ex), getHttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
-    @ExceptionHandler(value= DifferentAccountException.class)
-    protected ResponseEntity<Object>handleDifferentAccount(
-            RuntimeException ex,WebRequest request
-    ){
-        return handleExceptionInternal(ex,getResponseBody(ex),getHttpHeaders(),HttpStatus.FORBIDDEN,request);
-    }@ExceptionHandler(value= EmptyFileException.class)
-    protected ResponseEntity<Object>handleEmptyFile(
-            RuntimeException ex,WebRequest request
-    ){
-        return handleExceptionInternal(ex,getResponseBody(ex),getHttpHeaders(),HttpStatus.BAD_REQUEST,request);
+
+    @ExceptionHandler(value = DifferentAccountException.class)
+    protected ResponseEntity<Object> handleDifferentAccount(
+            RuntimeException ex, WebRequest request
+    ) {
+        return handleExceptionInternal(ex, getResponseBody(ex), getHttpHeaders(), HttpStatus.FORBIDDEN, request);
     }
-    @ExceptionHandler(value= IOException.class)
-    protected ResponseEntity<Object>handleIoException(
-            RuntimeException ex,WebRequest request
-    ){
-        return handleExceptionInternal(ex,getResponseBody(ex),getHttpHeaders(),HttpStatus.BAD_REQUEST,request);
+
+    @ExceptionHandler(value = EmptyFileException.class)
+    protected ResponseEntity<Object> handleEmptyFile(
+            RuntimeException ex, WebRequest request
+    ) {
+        return handleExceptionInternal(ex, getResponseBody(ex), getHttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
+
+    @ExceptionHandler(value = IOException.class)
+    protected ResponseEntity<Object> handleIoException(
+            RuntimeException ex, WebRequest request
+    ) {
+        return handleExceptionInternal(ex, getResponseBody(ex), getHttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
 }

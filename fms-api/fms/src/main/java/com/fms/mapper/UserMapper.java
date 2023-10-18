@@ -5,8 +5,6 @@ import com.fms.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.UUID;
-
 @Configuration
 @RequiredArgsConstructor
 public class UserMapper {
@@ -21,7 +19,8 @@ public class UserMapper {
                 .files(userDto.getFiles().stream().map(fileMapper::toEntity).toList())
                 .build();
     }
-    public UserDto toDto(User user){
+
+    public UserDto toDto(User user) {
         return UserDto.builder()
                 .id(user.getId())
                 .email(user.getEmail())

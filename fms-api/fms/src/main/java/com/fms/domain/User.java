@@ -17,8 +17,8 @@ import java.util.List;
 @SuperBuilder
 @Getter
 @Setter
-@Table(name="users")
-public class User extends BaseEntity{
+@Table(name = "users")
+public class User extends BaseEntity {
     @NonNull
     @NotEmpty
     private String username;
@@ -29,6 +29,6 @@ public class User extends BaseEntity{
     @NotEmpty
     private String email;
 
-    @OneToMany(mappedBy = "user" ,cascade = CascadeType.PERSIST)
-    private List<File> files=new ArrayList<File>();
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
+    private List<File> files = new ArrayList<File>();
 }

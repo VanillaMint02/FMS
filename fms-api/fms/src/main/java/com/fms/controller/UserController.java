@@ -17,6 +17,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+
     @GetMapping("/{id}")
     public ResponseEntity<User> getUserById(@RequestParam("id") UUID userid) {
         return new ResponseEntity<>(this.userService.findUserById(userid), HttpStatus.OK);

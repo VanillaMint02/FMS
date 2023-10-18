@@ -9,12 +9,10 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-public class TokenGenerator
-{
-    public String generateToken(String username)
-    {
-        Date   currentDate = new Date();
-        Date   expiryDate  = new Date(currentDate.getTime() + SecurityConstants.JWT_EXPIRATION);
+public class TokenGenerator {
+    public String generateToken(String username) {
+        Date currentDate = new Date();
+        Date expiryDate = new Date(currentDate.getTime() + SecurityConstants.JWT_EXPIRATION);
         return Jwts.builder()
                 .setSubject(username)
                 .setIssuedAt(new Date())
@@ -23,8 +21,7 @@ public class TokenGenerator
                 .compact();
     }
 
-    public String getEmailFromJwtToken(String token)
-    {
+    public String getEmailFromJwtToken(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(SecurityConstants.JWT_SECRET)
                 .parseClaimsJws(token)
@@ -32,17 +29,13 @@ public class TokenGenerator
         return claims.getSubject();
     }
 
-    public Boolean validateToken(String token)
-    {
+    public Boolean validateToken(String token) {
 
-        try
-        {
+        try {
             Jwts.parser().setSigningKey(SecurityConstants.JWT_SECRET)
                     .parseClaimsJws(token);
             return true;
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             throw new AuthenticationCredentialsNotFoundException("Token expired or incorrect");
         }
     }

@@ -23,10 +23,10 @@ public class SecurityConfig {
     private final JwtAuthEntryPoint jwtAuthEntryPoint;
 
     @Bean
-    AuthenticationFilter authenticationFilter()
-    {
+    AuthenticationFilter authenticationFilter() {
         return new AuthenticationFilter();
     }
+
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
@@ -44,12 +44,12 @@ public class SecurityConfig {
                 authenticationEntryPoint(jwtAuthEntryPoint));
 
         http
-                .authorizeHttpRequests(requests->requests
-                                .requestMatchers("auth/**")
-                                .permitAll()
-                                .anyRequest()
-                                .authenticated()
-                        );
+                .authorizeHttpRequests(requests -> requests
+                        .requestMatchers("auth/**")
+                        .permitAll()
+                        .anyRequest()
+                        .authenticated()
+                );
 
         http.addFilterBefore(authenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
